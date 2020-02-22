@@ -13,7 +13,16 @@ path = "src/main.rs"
 avm1-parser = "^0.10.0"
 avm1-types = "^0.10.0"
 clap = {git = "https://github.com/clap-rs/clap/"}
+exitcode = "^1.1.2"
+hex = "^0.4.2"
 serde = "^1.0.104"
 serde_json_v8 = "^0.0.1"
+sha2 = "^0.8.1"
 swf-parser = "^0.11.0"
 swf-types = "^0.11.0"
+tokio = { version = "^0.2.11", features = ["fs", "macros"] }
+
+[dev-dependencies]
+assert_cmd = "^0.12.0"
+predicates = "^1.0.2"
+tempfile = "^3.1.0"

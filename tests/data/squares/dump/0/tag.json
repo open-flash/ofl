@@ -1,0 +1,10 @@
+{
+  "type": "file-attributes",
+  "use_network": false,
+  "use_relative_urls": false,
+  "no_cross_domain_caching": false,
+  "use_as3": false,
+  "has_metadata": true,
+  "use_gpu": false,
+  "use_direct_blit": false
+}
