@@ -14,6 +14,12 @@ The current subcommands allow to parse an SWF file, extract its content and anal
 
 This project is part of the [Open Flash][ofl] project.
 
+## Installation
+
+```
+cargo install --git https://github.com/open-flash/ofl
+```
+
 ## Commands
 
 ### `dump`
@@ -94,7 +100,7 @@ Example output:
 }
 ```
 
-# License
+## License
 
 [AGPL 3.0 or later](./LICENSE.md)
 
