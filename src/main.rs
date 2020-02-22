@@ -119,8 +119,6 @@ async fn dump_cmd(args: &DumpArgs) -> i32 {
   let output_dir_path = match &args.output {
     Some(output_dir) => output_dir.to_path_buf(),
     None => {
-      dbg!(swf_path);
-      dbg!(swf_path.parent());
       let dir_name: OsString = match swf_path.file_stem() {
         Some(stem) => stem.to_os_string(),
         None => OsString::from("ofl-dump"),
