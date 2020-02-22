@@ -2,8 +2,14 @@
 name = "ofl"
 version = "0.1.0"
 authors = ["Charles Samborski <demurgos@demurgos.net>"]
+description = "Open Flash CLI application for SWF files"
+homepage = "https://github.com/open-flash/ofl"
+repository = "https://github.com/open-flash/ofl"
+readme = "./README.md"
+categories = ["command-line-utilities"]
+keywords = ["open-flash", "swf", "flash"]
+license = "AGPL-3.0-or-later"
 edition = "2018"
-publish = false
 
 [[bin]]
 name = "ofl"
