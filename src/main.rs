@@ -67,10 +67,39 @@ async fn main() {
 
   let code = match &args.command {
     CliCommand::Dump(ref dump_args) => dump_cmd(dump_args).await,
-    CliCommand::Parse(ref _parse_args) => unimplemented!(),
+    CliCommand::Parse(ref parse_args) => parse_cmd(parse_args).await,
   };
 
   std::process::exit(code);
+}
+
+async fn parse_cmd(args: &ParseArgs) -> i32 {
+  let swf_bytes = match tokio::fs::read(&args.swf).await {
+    Ok(bytes) => bytes,
+    Err(e) => {
+      eprintln!("Failed to read input SWF");
+      eprintln!("{:?}", &e);
+      return exitcode::NOINPUT;
+    }
+  };
+
+  let movie = match parse_swf(&swf_bytes) {
+    Ok(movie) => movie,
+    Err(e) => {
+      eprintln!("Failed to parse SWF file. Please report this error at https://github.com/open-flash/swf-parser/");
+      eprintln!("{:?}", &e);
+      return exitcode::DATAERR;
+    }
+  };
+
+  {
+    let stdout = std::io::stdout();
+    let stdout_lock = stdout.lock();
+    let mut ser = serde_json_v8::Serializer::pretty(stdout_lock);
+    movie.serialize(&mut ser).expect("Failed to serialize movie");
+    ser.into_inner().write_all(b"\n").expect("Failed to write movie");
+  }
+  exitcode::OK
 }
 
 async fn dump_cmd(args: &DumpArgs) -> i32 {

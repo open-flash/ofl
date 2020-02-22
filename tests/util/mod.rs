@@ -3,7 +3,8 @@ use std::ffi::OsString;
 use std::fs::FileType;
 use std::path::Path;
 
-pub fn assert_same_directory_content(actual: impl AsRef<Path>, expected: impl AsRef<Path>) {
+#[allow(unused)]
+pub(crate) fn assert_same_directory_content(actual: impl AsRef<Path>, expected: impl AsRef<Path>) {
   let actual_entries = read_dir(actual).unwrap();
   let expected_entries = read_dir(expected).unwrap();
   assert_eq!(actual_entries, expected_entries);
