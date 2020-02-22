@@ -32,10 +32,9 @@ fn dump() -> Result<(), Box<dyn std::error::Error>> {
 fn file_doesnt_exist() -> Result<(), Box<dyn std::error::Error>> {
   let mut cmd = Command::cargo_bin("ofl")?;
   cmd.arg("dump").arg("missing.swf").arg("missing");
-  cmd
-    .assert()
-    .failure()
-    .stderr(predicate::str::contains("Aborting because the parents of the output directory do not exist."));
+  cmd.assert().failure().stderr(predicate::str::contains(
+    "Aborting because the parents of the output directory do not exist.",
+  ));
 
   Ok(())
 }
